@@ -12,10 +12,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>layout</title>
-
-<link href="${ctx}/content/notice/css/<tiles:getAsString name="css"/>" 
-type="text/css" rel="stylesheet" />	
-
+<link href="${ctx}/content/css/style.css" type="text/css"
+	rel="stylesheet" />
 </head>
 
 <body>
@@ -25,20 +23,23 @@ type="text/css" rel="stylesheet" />
 		<tiles:insertAttribute name="header" />
 	</div>
 	</header>
-
+<div id="visual">
+		<img src="/WSQPrj/content/images/bg.png" alt="bg" class="bg_chat1" />
+		<img src="/WSQPrj/content/images/chat.png" alt="bg" class="bg_chat2"/>
+	</div>
 
 	<div id="body">
 		<div class="content-container clearfix">
 			<!-- notice 컨텐츠 들어가는 부분 -->
-			<tiles:insertAttribute name="contnet" />
+			<tiles:insertAttribute name="content" />
 		</div>
 	</div>
 
 
 	<footer id="footer">
 	<div class="content-container">
-	<!-- footer 들어가는 부분 -->
-	<tiles:insertAttribute name="footer"/>
+		<!-- footer 들어가는 부분 -->
+		<tiles:insertAttribute name="footer" />
 	</div>
 	</footer>
 

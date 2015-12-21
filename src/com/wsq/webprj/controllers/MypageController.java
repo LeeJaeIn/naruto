@@ -30,9 +30,12 @@ public class MypageController {
 	private MemberProfileDao profileDao;
 	
 	@RequestMapping(value="mypage", method=RequestMethod.GET) 
-	public String myPage(Model model, String id)
+	public String myPage(Model model, String id, Authentication auth)
 	{
-		MemberProfile mp = profileDao.getProfile(id);	
+		String mid = id;
+		if(mid == null)
+			mid = auth.getName();
+		MemberProfile mp = profileDao.getProfile(mid);	
 		model.addAttribute("mProfile", mp);
 
 		return "mypage/mypage";
@@ -49,10 +52,11 @@ public class MypageController {
 	@RequestMapping(value="mypageRev", method=RequestMethod.POST) 
 	public String ReviseMyPage(MemberProfile mProfile, Authentication auth) throws SQLException
 	{	
-		mProfile.setMember_mid(auth.getName());
+		String id =auth.getName();
+		mProfile.setMember_mid(id);
 		profileDao.update(mProfile);
 		
-		return "redirect:mypage"; 
+		return "mypage"; 
 	}
 }
 

@@ -51,6 +51,7 @@ public class JoinUsController {
 		Date regDate = new Date();
 		String id = m.getMid();
 		m.setRegDate(regDate);
+		
 		memberDao.insert(m);
 		
 		mprofileDao.insert(id);
